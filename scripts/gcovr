@@ -304,6 +304,10 @@ def search_file(expr, path):
     if path is None or path == ".":
         path = os.getcwd()
     elif not os.path.exists(path):
+        gcda = path + ".gcda"
+        gdno = path + ".gcno"
+        if os.path.exists(gcda) and os.path.exists(gcno):
+            return [gdca, gcno]
         raise IOError("Unknown directory '"+path+"'")
     for root, dirs, files in link_walker(path):
         for name in files:
