@@ -307,7 +307,7 @@ def search_file(expr, path):
         gcda = path + ".gcda"
         gdno = path + ".gcno"
         if os.path.exists(gcda) and os.path.exists(gcno):
-            return [gdca, gcno]
+            return [os.path.abspath(gdca), os.path.abspath(gcno)]
         raise IOError("Unknown directory '"+path+"'")
     for root, dirs, files in link_walker(path):
         for name in files:
